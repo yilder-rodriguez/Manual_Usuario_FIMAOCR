@@ -10,7 +10,7 @@
 
     <header class="navbar">
         <div class="brand">
-            <img src="./img/Sena.png" alt="Logo SENA">
+            <img src="./Img/Sena.png" alt="Logo SENA">
             <div>
                 <h1>FIMACOR</h1>
                 <p>Manual de Usuario en Video y Documentación SENA</p>
@@ -20,13 +20,13 @@
             <a href="#hero">Inicio</a>
             <a href="#videos">Manuales en Video</a>
             <a href="#recursos">Documentos</a>
-            <button id="themeToggle" class="theme-toggle" type="button" aria-label="Cambiar tema">🌙</button>
         </nav>
     </header>
 
     <section id="hero" class="hero">
         <div class="hero-content">
-            <h2>Manual de Usuario del Sistema FIMACOR</h2>
+            <div class="badge">CMTC - SENA · Manuales de usuario</div>
+            <h2>Manual de Usuario del Sistema <span>FIMACOR</span></h2>
             <p>Plataforma audiovisual para el control, operación y mantenimiento de la maquinaria textil.</p>
 
             <div class="search-box">
@@ -48,7 +48,494 @@
             <h3>Catálogo de Videos Instructivos</h3>
             <span id="videoCount"></span>
         </div>
-        <div class="video-grid" id="videoGrid"></div>
+
+        <!--
+        ============================================================
+        CÓMO AGREGAR UN VIDEO
+        1. Copia el bloque <article> de abajo y pégalo dentro de
+           <div id="videoGrid"> (al inicio o al final).
+        2. En <source src="..."> pon UNA de estas dos opciones:
+             - URL:      https://midominio.com/videos/login.mp4
+             - Archivo:  ./Videos/login.mp4   (el archivo va en la carpeta Videos/)
+        3. Cambia data-category por: autenticacion | maquinaria | inventario | reportes
+        4. Cambia el tag, título, descripción y duración. El contador
+           y los filtros se actualizan solos.
+
+        <article class="video-card" data-category="autenticacion">
+            <div class="video-player">
+                <span class="card-tag">Autenticación</span>
+                <video controls preload="metadata" poster="./Img/portada.jpg">
+                    <source src="./Videos/mi_video.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="video-body">
+                <div>
+                    <h4>Título del video</h4>
+                    <p>Descripción corta de lo que se explica.</p>
+                </div>
+                <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+            </div>
+        </article>
+
+        Si el video está en YouTube, cambia el <video> por:
+        <iframe src="https://www.youtube.com/embed/ID_DEL_VIDEO" allowfullscreen loading="lazy"></iframe>
+        ============================================================
+        -->
+
+        <div class="video-grid" id="videoGrid">
+            <!-- ===== 30 videos de ejemplo (URLs aleatorias): reemplázalos por los tuyos ===== -->
+            <article class="video-card" data-category="autenticacion">
+                <div class="video-player">
+                    <span class="card-tag">Autenticación</span>
+                    <video controls preload="metadata">
+                        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4#t=0.5" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-body">
+                    <div>
+                        <h4>Video 1: Autenticación y Roles de Usuario</h4>
+                        <p>Explicación paso a paso del módulo Autenticación dentro de FIMACOR.</p>
+                    </div>
+                    <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+                </div>
+            </article>
+            <article class="video-card" data-category="maquinaria">
+                <div class="video-player">
+                    <span class="card-tag">Maquinaria Textil</span>
+                    <video controls preload="metadata">
+                        <source src="https://www.w3schools.com/html/mov_bbb.mp4#t=0.5" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-body">
+                    <div>
+                        <h4>Video 2: Registro y Operación de Telar</h4>
+                        <p>Explicación paso a paso del módulo Maquinaria Textil dentro de FIMACOR.</p>
+                    </div>
+                    <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+                </div>
+            </article>
+            <article class="video-card" data-category="inventario">
+                <div class="video-player">
+                    <span class="card-tag">Inventarios</span>
+                    <video controls preload="metadata">
+                        <source src="https://www.w3schools.com/html/movie.mp4#t=0.5" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-body">
+                    <div>
+                        <h4>Video 3: Control de Hilos y Materia Prima</h4>
+                        <p>Explicación paso a paso del módulo Inventarios dentro de FIMACOR.</p>
+                    </div>
+                    <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+                </div>
+            </article>
+            <article class="video-card" data-category="reportes">
+                <div class="video-player">
+                    <span class="card-tag">Reportes</span>
+                    <video controls preload="metadata">
+                        <source src="https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4#t=0.5" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-body">
+                    <div>
+                        <h4>Video 4: Generación de Reporte en PDF</h4>
+                        <p>Explicación paso a paso del módulo Reportes dentro de FIMACOR.</p>
+                    </div>
+                    <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+                </div>
+            </article>
+            <article class="video-card" data-category="autenticacion">
+                <div class="video-player">
+                    <span class="card-tag">Autenticación</span>
+                    <video controls preload="metadata">
+                        <source src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4#t=0.5" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-body">
+                    <div>
+                        <h4>Video 5: Autenticación y Roles de Usuario</h4>
+                        <p>Explicación paso a paso del módulo Autenticación dentro de FIMACOR.</p>
+                    </div>
+                    <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+                </div>
+            </article>
+            <article class="video-card" data-category="maquinaria">
+                <div class="video-player">
+                    <span class="card-tag">Maquinaria Textil</span>
+                    <video controls preload="metadata">
+                        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4#t=0.5" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-body">
+                    <div>
+                        <h4>Video 6: Registro y Operación de Telar</h4>
+                        <p>Explicación paso a paso del módulo Maquinaria Textil dentro de FIMACOR.</p>
+                    </div>
+                    <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+                </div>
+            </article>
+            <article class="video-card" data-category="inventario">
+                <div class="video-player">
+                    <span class="card-tag">Inventarios</span>
+                    <video controls preload="metadata">
+                        <source src="https://www.w3schools.com/html/mov_bbb.mp4#t=0.5" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-body">
+                    <div>
+                        <h4>Video 7: Control de Hilos y Materia Prima</h4>
+                        <p>Explicación paso a paso del módulo Inventarios dentro de FIMACOR.</p>
+                    </div>
+                    <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+                </div>
+            </article>
+            <article class="video-card" data-category="reportes">
+                <div class="video-player">
+                    <span class="card-tag">Reportes</span>
+                    <video controls preload="metadata">
+                        <source src="https://www.w3schools.com/html/movie.mp4#t=0.5" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-body">
+                    <div>
+                        <h4>Video 8: Generación de Reporte en PDF</h4>
+                        <p>Explicación paso a paso del módulo Reportes dentro de FIMACOR.</p>
+                    </div>
+                    <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+                </div>
+            </article>
+            <article class="video-card" data-category="autenticacion">
+                <div class="video-player">
+                    <span class="card-tag">Autenticación</span>
+                    <video controls preload="metadata">
+                        <source src="https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4#t=0.5" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-body">
+                    <div>
+                        <h4>Video 9: Autenticación y Roles de Usuario</h4>
+                        <p>Explicación paso a paso del módulo Autenticación dentro de FIMACOR.</p>
+                    </div>
+                    <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+                </div>
+            </article>
+            <article class="video-card" data-category="maquinaria">
+                <div class="video-player">
+                    <span class="card-tag">Maquinaria Textil</span>
+                    <video controls preload="metadata">
+                        <source src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4#t=0.5" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-body">
+                    <div>
+                        <h4>Video 10: Registro y Operación de Telar</h4>
+                        <p>Explicación paso a paso del módulo Maquinaria Textil dentro de FIMACOR.</p>
+                    </div>
+                    <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+                </div>
+            </article>
+            <article class="video-card" data-category="inventario">
+                <div class="video-player">
+                    <span class="card-tag">Inventarios</span>
+                    <video controls preload="metadata">
+                        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4#t=0.5" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-body">
+                    <div>
+                        <h4>Video 11: Control de Hilos y Materia Prima</h4>
+                        <p>Explicación paso a paso del módulo Inventarios dentro de FIMACOR.</p>
+                    </div>
+                    <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+                </div>
+            </article>
+            <article class="video-card" data-category="reportes">
+                <div class="video-player">
+                    <span class="card-tag">Reportes</span>
+                    <video controls preload="metadata">
+                        <source src="https://www.w3schools.com/html/mov_bbb.mp4#t=0.5" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-body">
+                    <div>
+                        <h4>Video 12: Generación de Reporte en PDF</h4>
+                        <p>Explicación paso a paso del módulo Reportes dentro de FIMACOR.</p>
+                    </div>
+                    <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+                </div>
+            </article>
+            <article class="video-card" data-category="autenticacion">
+                <div class="video-player">
+                    <span class="card-tag">Autenticación</span>
+                    <video controls preload="metadata">
+                        <source src="https://www.w3schools.com/html/movie.mp4#t=0.5" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-body">
+                    <div>
+                        <h4>Video 13: Autenticación y Roles de Usuario</h4>
+                        <p>Explicación paso a paso del módulo Autenticación dentro de FIMACOR.</p>
+                    </div>
+                    <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+                </div>
+            </article>
+            <article class="video-card" data-category="maquinaria">
+                <div class="video-player">
+                    <span class="card-tag">Maquinaria Textil</span>
+                    <video controls preload="metadata">
+                        <source src="https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4#t=0.5" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-body">
+                    <div>
+                        <h4>Video 14: Registro y Operación de Telar</h4>
+                        <p>Explicación paso a paso del módulo Maquinaria Textil dentro de FIMACOR.</p>
+                    </div>
+                    <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+                </div>
+            </article>
+            <article class="video-card" data-category="inventario">
+                <div class="video-player">
+                    <span class="card-tag">Inventarios</span>
+                    <video controls preload="metadata">
+                        <source src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4#t=0.5" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-body">
+                    <div>
+                        <h4>Video 15: Control de Hilos y Materia Prima</h4>
+                        <p>Explicación paso a paso del módulo Inventarios dentro de FIMACOR.</p>
+                    </div>
+                    <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+                </div>
+            </article>
+            <article class="video-card" data-category="reportes">
+                <div class="video-player">
+                    <span class="card-tag">Reportes</span>
+                    <video controls preload="metadata">
+                        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4#t=0.5" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-body">
+                    <div>
+                        <h4>Video 16: Generación de Reporte en PDF</h4>
+                        <p>Explicación paso a paso del módulo Reportes dentro de FIMACOR.</p>
+                    </div>
+                    <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+                </div>
+            </article>
+            <article class="video-card" data-category="autenticacion">
+                <div class="video-player">
+                    <span class="card-tag">Autenticación</span>
+                    <video controls preload="metadata">
+                        <source src="https://www.w3schools.com/html/mov_bbb.mp4#t=0.5" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-body">
+                    <div>
+                        <h4>Video 17: Autenticación y Roles de Usuario</h4>
+                        <p>Explicación paso a paso del módulo Autenticación dentro de FIMACOR.</p>
+                    </div>
+                    <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+                </div>
+            </article>
+            <article class="video-card" data-category="maquinaria">
+                <div class="video-player">
+                    <span class="card-tag">Maquinaria Textil</span>
+                    <video controls preload="metadata">
+                        <source src="https://www.w3schools.com/html/movie.mp4#t=0.5" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-body">
+                    <div>
+                        <h4>Video 18: Registro y Operación de Telar</h4>
+                        <p>Explicación paso a paso del módulo Maquinaria Textil dentro de FIMACOR.</p>
+                    </div>
+                    <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+                </div>
+            </article>
+            <article class="video-card" data-category="inventario">
+                <div class="video-player">
+                    <span class="card-tag">Inventarios</span>
+                    <video controls preload="metadata">
+                        <source src="https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4#t=0.5" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-body">
+                    <div>
+                        <h4>Video 19: Control de Hilos y Materia Prima</h4>
+                        <p>Explicación paso a paso del módulo Inventarios dentro de FIMACOR.</p>
+                    </div>
+                    <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+                </div>
+            </article>
+            <article class="video-card" data-category="reportes">
+                <div class="video-player">
+                    <span class="card-tag">Reportes</span>
+                    <video controls preload="metadata">
+                        <source src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4#t=0.5" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-body">
+                    <div>
+                        <h4>Video 20: Generación de Reporte en PDF</h4>
+                        <p>Explicación paso a paso del módulo Reportes dentro de FIMACOR.</p>
+                    </div>
+                    <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+                </div>
+            </article>
+            <article class="video-card" data-category="autenticacion">
+                <div class="video-player">
+                    <span class="card-tag">Autenticación</span>
+                    <video controls preload="metadata">
+                        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4#t=0.5" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-body">
+                    <div>
+                        <h4>Video 21: Autenticación y Roles de Usuario</h4>
+                        <p>Explicación paso a paso del módulo Autenticación dentro de FIMACOR.</p>
+                    </div>
+                    <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+                </div>
+            </article>
+            <article class="video-card" data-category="maquinaria">
+                <div class="video-player">
+                    <span class="card-tag">Maquinaria Textil</span>
+                    <video controls preload="metadata">
+                        <source src="https://www.w3schools.com/html/mov_bbb.mp4#t=0.5" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-body">
+                    <div>
+                        <h4>Video 22: Registro y Operación de Telar</h4>
+                        <p>Explicación paso a paso del módulo Maquinaria Textil dentro de FIMACOR.</p>
+                    </div>
+                    <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+                </div>
+            </article>
+            <article class="video-card" data-category="inventario">
+                <div class="video-player">
+                    <span class="card-tag">Inventarios</span>
+                    <video controls preload="metadata">
+                        <source src="https://www.w3schools.com/html/movie.mp4#t=0.5" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-body">
+                    <div>
+                        <h4>Video 23: Control de Hilos y Materia Prima</h4>
+                        <p>Explicación paso a paso del módulo Inventarios dentro de FIMACOR.</p>
+                    </div>
+                    <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+                </div>
+            </article>
+            <article class="video-card" data-category="reportes">
+                <div class="video-player">
+                    <span class="card-tag">Reportes</span>
+                    <video controls preload="metadata">
+                        <source src="https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4#t=0.5" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-body">
+                    <div>
+                        <h4>Video 24: Generación de Reporte en PDF</h4>
+                        <p>Explicación paso a paso del módulo Reportes dentro de FIMACOR.</p>
+                    </div>
+                    <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+                </div>
+            </article>
+            <article class="video-card" data-category="autenticacion">
+                <div class="video-player">
+                    <span class="card-tag">Autenticación</span>
+                    <video controls preload="metadata">
+                        <source src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4#t=0.5" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-body">
+                    <div>
+                        <h4>Video 25: Autenticación y Roles de Usuario</h4>
+                        <p>Explicación paso a paso del módulo Autenticación dentro de FIMACOR.</p>
+                    </div>
+                    <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+                </div>
+            </article>
+            <article class="video-card" data-category="maquinaria">
+                <div class="video-player">
+                    <span class="card-tag">Maquinaria Textil</span>
+                    <video controls preload="metadata">
+                        <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4#t=0.5" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-body">
+                    <div>
+                        <h4>Video 26: Registro y Operación de Telar</h4>
+                        <p>Explicación paso a paso del módulo Maquinaria Textil dentro de FIMACOR.</p>
+                    </div>
+                    <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+                </div>
+            </article>
+            <article class="video-card" data-category="inventario">
+                <div class="video-player">
+                    <span class="card-tag">Inventarios</span>
+                    <video controls preload="metadata">
+                        <source src="https://www.w3schools.com/html/mov_bbb.mp4#t=0.5" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-body">
+                    <div>
+                        <h4>Video 27: Control de Hilos y Materia Prima</h4>
+                        <p>Explicación paso a paso del módulo Inventarios dentro de FIMACOR.</p>
+                    </div>
+                    <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+                </div>
+            </article>
+            <article class="video-card" data-category="reportes">
+                <div class="video-player">
+                    <span class="card-tag">Reportes</span>
+                    <video controls preload="metadata">
+                        <source src="https://www.w3schools.com/html/movie.mp4#t=0.5" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-body">
+                    <div>
+                        <h4>Video 28: Generación de Reporte en PDF</h4>
+                        <p>Explicación paso a paso del módulo Reportes dentro de FIMACOR.</p>
+                    </div>
+                    <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+                </div>
+            </article>
+            <article class="video-card" data-category="autenticacion">
+                <div class="video-player">
+                    <span class="card-tag">Autenticación</span>
+                    <video controls preload="metadata">
+                        <source src="https://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4#t=0.5" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-body">
+                    <div>
+                        <h4>Video 29: Autenticación y Roles de Usuario</h4>
+                        <p>Explicación paso a paso del módulo Autenticación dentro de FIMACOR.</p>
+                    </div>
+                    <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+                </div>
+            </article>
+            <article class="video-card" data-category="maquinaria">
+                <div class="video-player">
+                    <span class="card-tag">Maquinaria Textil</span>
+                    <video controls preload="metadata">
+                        <source src="https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4#t=0.5" type="video/mp4">
+                    </video>
+                </div>
+                <div class="video-body">
+                    <div>
+                        <h4>Video 30: Registro y Operación de Telar</h4>
+                        <p>Explicación paso a paso del módulo Maquinaria Textil dentro de FIMACOR.</p>
+                    </div>
+                    <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
+                </div>
+            </article>
+        </div>
+        <p class="empty" id="emptyMsg" hidden>No se encontraron videos con los criterios ingresados.</p>
 
         <section id="recursos">
             <div class="section-title">

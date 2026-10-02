@@ -1,47 +1,34 @@
-/* FIMACOR - Manuales en video. Paleta y tipografia tomadas del sistema. */
+/* FIMACOR - Manuales en video. Colores tomados del login del sistema (tema claro). */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 :root {
     --primario: #2e7d32;
     --primario-osc: #1b5e20;
     --acento: #4caf50;
-    --fondo-nav: #0d1b2a;
-    --fondo: #eef2ef;
-    --superficie: #f8faf8;
+    --acento-claro: #68df7f;
+    --fondo: #f2f6f3;
     --tarjeta: #ffffff;
-    --borde: #e0e0e0;
-    --texto: #333333;
-    --texto-suave: #666666;
+    --borde: #dfe8e1;
+    --texto: #1f2d24;
+    --texto-suave: #5f6f65;
     --chip: #e8f5e9;
-    --sombra: 0 4px 18px rgba(13, 27, 42, .08);
+    --sombra: 0 10px 28px rgba(16, 42, 28, .10);
     --radio: 10px;
-    --radio-grande: 20px;
-}
-
-body.fimacor-dark-mode {
-    --fondo: #031b16;
-    --superficie: #06261f;
-    --tarjeta: #063629;
-    --borde: rgba(132, 255, 159, .18);
-    --texto: #eefaf1;
-    --texto-suave: rgba(238, 250, 241, .66);
-    --chip: rgba(50, 223, 99, .14);
-    --acento: #32df63;
-    --sombra: 0 6px 22px rgba(0, 0, 0, .35);
-    color-scheme: dark;
+    --radio-grande: 18px;
 }
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
 body {
-    font-family: 'Roboto', sans-serif;
-    background: var(--fondo);
-    color: var(--texto);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    transition: background .25s, color .25s;
+    font-family: 'Roboto', sans-serif;
+    color: var(--texto);
+    background:
+        radial-gradient(circle at 94% 12%, rgba(27, 134, 56, .12) 0 2px, transparent 3px) 0 0 / 20px 20px,
+        var(--fondo);
 }
 
 /* Navbar */
@@ -54,46 +41,53 @@ body {
     justify-content: space-between;
     gap: 20px;
     padding: 12px 40px;
-    background: var(--fondo-nav);
-    border-bottom: 1px solid rgba(255, 255, 255, .08);
+    background: #fff;
+    border-bottom: 3px solid var(--primario);
+    box-shadow: 0 2px 12px rgba(16, 42, 28, .08);
 }
-
 .brand { display: flex; align-items: center; gap: 14px; }
 .brand img { width: 46px; height: 46px; object-fit: contain; }
-.brand h1 { font-size: 20px; letter-spacing: 1px; color: #fff; }
-.brand p { font-size: 11px; color: rgba(255, 255, 255, .6); }
+.brand h1 { font-size: 20px; letter-spacing: 2px; color: var(--primario-osc); }
+.brand p { font-size: 11px; color: var(--texto-suave); }
 
-.nav-links { display: flex; align-items: center; gap: 24px; }
+.nav-links { display: flex; gap: 24px; }
 .nav-links a {
-    color: rgba(255, 255, 255, .7);
+    color: var(--texto-suave);
     text-decoration: none;
     font-size: 14px;
+    font-weight: 500;
     transition: color .2s;
 }
-.nav-links a:hover { color: var(--acento); }
+.nav-links a:hover { color: var(--primario); }
 
-.theme-toggle {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, .25);
-    color: #fff;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    cursor: pointer;
-    font-size: 16px;
-}
-.theme-toggle:hover { border-color: var(--acento); }
-
-/* Hero */
+/* Hero (panel verde estilo login) */
 .hero {
-    background: linear-gradient(135deg, var(--primario-osc), var(--primario));
-    padding: 56px 20px;
+    width: min(calc(100% - 48px), 1400px);
+    margin: 28px auto 0;
+    padding: 48px 24px;
     text-align: center;
     color: #fff;
+    border-radius: var(--radio-grande);
+    background: linear-gradient(135deg, var(--primario-osc) 0%, var(--primario) 60%, #43a047 100%);
+    box-shadow: var(--sombra);
 }
 .hero-content { max-width: 860px; margin: 0 auto; }
-.hero h2 { font-size: 32px; margin-bottom: 10px; }
-.hero p { font-size: 15px; color: rgba(255, 255, 255, .85); margin-bottom: 28px; }
+
+.badge {
+    display: inline-block;
+    margin-bottom: 18px;
+    padding: 8px 16px;
+    border: 1px solid rgba(255, 255, 255, .45);
+    border-radius: 22px;
+    background: rgba(0, 45, 34, .35);
+    color: var(--acento-claro);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+.hero h2 { font-size: 34px; margin-bottom: 10px; }
+.hero h2 span { color: var(--acento-claro); }
+.hero p { font-size: 15px; color: rgba(255, 255, 255, .88); margin-bottom: 26px; }
 
 .search-box { max-width: 600px; margin: 0 auto 20px; }
 .search-box input {
@@ -102,17 +96,17 @@ body {
     border: 2px solid transparent;
     border-radius: var(--radio);
     background: #fff;
-    color: #333;
+    color: var(--texto);
     font: inherit;
     font-size: 14px;
     outline: none;
 }
-.search-box input:focus { border-color: var(--acento); }
+.search-box input:focus { border-color: var(--acento-claro); }
 
 .category-buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
 .cat-btn {
     padding: 8px 18px;
-    border: 1px solid rgba(255, 255, 255, .45);
+    border: 1px solid rgba(255, 255, 255, .5);
     border-radius: 20px;
     background: transparent;
     color: #fff;
@@ -121,11 +115,11 @@ body {
     cursor: pointer;
     transition: all .2s;
 }
-.cat-btn:hover { background: rgba(255, 255, 255, .15); }
+.cat-btn:hover { background: rgba(255, 255, 255, .16); }
 .cat-btn.active { background: #fff; color: var(--primario-osc); font-weight: 500; }
 
 /* Contenido */
-.main-container { flex: 1; width: 100%; max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
+.main-container { flex: 1; width: 100%; max-width: 1400px; margin: 0 auto; padding: 40px 24px; }
 
 .section-title {
     display: flex;
@@ -136,7 +130,6 @@ body {
     border-bottom: 2px solid var(--primario);
 }
 .section-title h3 { font-size: 22px; color: var(--primario-osc); }
-body.fimacor-dark-mode .section-title h3 { color: var(--acento); }
 .section-title span { font-size: 13px; color: var(--texto-suave); }
 
 .video-grid {
@@ -154,14 +147,16 @@ body.fimacor-dark-mode .section-title h3 { color: var(--acento); }
 }
 .video-card { overflow: hidden; display: flex; flex-direction: column; transition: transform .2s; }
 .video-card:hover { transform: translateY(-3px); }
+.video-card[hidden] { display: none; }
 
 .video-player { position: relative; aspect-ratio: 16 / 9; background: #000; }
-.video-player video { width: 100%; height: 100%; object-fit: contain; }
+.video-player video, .video-player iframe { width: 100%; height: 100%; border: 0; object-fit: contain; }
 
 .card-tag {
     position: absolute;
     top: 10px;
     left: 10px;
+    z-index: 1;
     padding: 3px 9px;
     border-radius: 4px;
     background: var(--primario);
@@ -183,9 +178,9 @@ body.fimacor-dark-mode .section-title h3 { color: var(--acento); }
     font-size: 11px;
     color: var(--primario);
 }
-body.fimacor-dark-mode .video-meta { color: var(--acento); }
 
-.empty { grid-column: 1 / -1; padding: 40px 0; text-align: center; color: var(--texto-suave); }
+.empty { padding: 40px 0; text-align: center; color: var(--texto-suave); }
+.empty[hidden] { display: none; }
 
 /* Recursos */
 .resources-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
@@ -195,11 +190,12 @@ body.fimacor-dark-mode .video-meta { color: var(--acento); }
 
 .btn-download {
     display: inline-block;
-    padding: 9px 18px;
+    padding: 10px 20px;
     border-radius: var(--radio);
     background: var(--primario);
     color: #fff;
     font-size: 13px;
+    font-weight: 500;
     text-decoration: none;
     transition: background .2s;
 }
@@ -208,8 +204,9 @@ body.fimacor-dark-mode .video-meta { color: var(--acento); }
 /* Footer */
 .footer {
     padding: 22px;
-    background: var(--fondo-nav);
-    color: rgba(255, 255, 255, .6);
+    background: #fff;
+    border-top: 3px solid var(--primario);
+    color: var(--texto-suave);
     font-size: 12px;
     text-align: center;
 }
@@ -217,5 +214,21 @@ body.fimacor-dark-mode .video-meta { color: var(--acento); }
 @media (max-width: 720px) {
     .navbar { padding: 12px 16px; flex-wrap: wrap; }
     .nav-links { gap: 14px; }
+    .hero { width: calc(100% - 24px); padding: 32px 16px; }
     .hero h2 { font-size: 24px; }
+}
+
+/* Aviso cuando un video no carga */
+.video-error {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, .82);
+    color: #fff;
+    font-size: 13px;
+    text-align: center;
 }
