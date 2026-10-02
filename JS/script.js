@@ -1,109 +1,107 @@
-const videosData = [];
+// Datos de ejemplo. Reemplaza este arreglo por tus videos reales
+// (o por un fetch al servlet que los entregue).
+const CATEGORIAS = {
+    autenticacion: { titulo: 'Autenticación y Roles de Usuario', modulo: 'Autenticación' },
+    maquinaria:    { titulo: 'Registro y Operación de Telar',    modulo: 'Maquinaria Textil' },
+    inventario:    { titulo: 'Control de Hilos y Materia Prima', modulo: 'Inventarios' },
+    reportes:      { titulo: 'Generación de Reporte en PDF',     modulo: 'Reportes' }
+};
 
-function generate30Videos() {
-    const categories = ['autenticacion', 'maquinaria', 'inventario', 'reportes'];
-    const sampleVideos = [
-        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
-        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
-    ];
+const VIDEOS_MUESTRA = [
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+    'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4'
+];
 
-    for (let i = 1; i <= 30; i++) {
-        let cat = categories[(i - 1) % categories.length];
-        let titleName = "";
-        
-        if (cat === 'autenticacion') titleName = `Video ${i}: Autenticacion y Roles de Usuario ${i}`;
-        else if (cat === 'maquinaria') titleName = `Video ${i}: Registro y Operacion de Telar ${i}`;
-        else if (cat === 'inventario') titleName = `Video ${i}: Control de Hilos y Materia Prima ${i}`;
-        else titleName = `Video ${i}: Generacion de Reporte en PDF ${i}`;
+const claves = Object.keys(CATEGORIAS);
 
-        videosData.push({
-            id: i,
-            title: titleName,
-            category: cat,
-            duration: `0${(i % 5) + 2}:30`,
-            videoUrl: sampleVideos[i % sampleVideos.length],
-            description: `Explicacion paso a paso sobre el funcionamiento del modulo ${cat} dentro de la aplicacion FIMACOR.`
-        });
-    }
-}
-
-generate30Videos();
-
-let currentCategory = "todos";
-let currentSearch = "";
-
-const videoGrid = document.getElementById('videoGrid');
-const searchInput = document.getElementById('searchInput');
-const categoryButtons = document.querySelectorAll('.cat-btn');
-const videoCountText = document.getElementById('videoCount');
-
-window.addEventListener('DOMContentLoaded', () => {
-    renderVideos();
-    setupFilters();
+const videos = Array.from({ length: 30 }, (_, i) => {
+    const n = i + 1;
+    const categoria = claves[i % claves.length];
+    return {
+        titulo: `Video ${n}: ${CATEGORIAS[categoria].titulo}`,
+        categoria,
+        duracion: `0${(n % 5) + 2}:30`,
+        url: VIDEOS_MUESTRA[n % VIDEOS_MUESTRA.length],
+        descripcion: `Explicación paso a paso del módulo ${CATEGORIAS[categoria].modulo} dentro de FIMACOR.`
+    };
 });
 
-function renderVideos() {
-    videoGrid.innerHTML = "";
+const estado = { categoria: 'todos', busqueda: '' };
 
-    const filtered = videosData.filter(item => {
-        const matchesCategory = currentCategory === "todos" || item.category === currentCategory;
-        const matchesSearch = item.title.toLowerCase().includes(currentSearch.toLowerCase()) || 
-                              item.description.toLowerCase().includes(currentSearch.toLowerCase());
-        return matchesCategory && matchesSearch;
-    });
+const grid = document.getElementById('videoGrid');
+const contador = document.getElementById('videoCount');
+const buscador = document.getElementById('searchInput');
+const botones = document.querySelectorAll('.cat-btn');
+const btnTema = document.getElementById('themeToggle');
 
-    videoCountText.textContent = `Mostrando ${filtered.length} de ${videosData.length} videos`;
+const normalizar = (t) => t.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();
 
-    if (filtered.length === 0) {
-        videoGrid.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 40px 0;">No se encontraron videos con los criterios ingresados.</p>`;
+function crearTarjeta(v) {
+    const tarjeta = document.createElement('article');
+    tarjeta.className = 'video-card';
+    tarjeta.innerHTML = `
+        <div class="video-player">
+            <span class="card-tag"></span>
+            <video controls preload="none"></video>
+        </div>
+        <div class="video-body">
+            <div><h4></h4><p></p></div>
+            <div class="video-meta"><span>Módulo FIMACOR</span><span></span></div>
+        </div>`;
+
+    // textContent evita inyectar HTML si algún día los datos vienen de la BD
+    tarjeta.querySelector('.card-tag').textContent = CATEGORIAS[v.categoria].modulo;
+    tarjeta.querySelector('video').src = v.url;
+    tarjeta.querySelector('h4').textContent = v.titulo;
+    tarjeta.querySelector('p').textContent = v.descripcion;
+    tarjeta.querySelector('.video-meta span:last-child').textContent = `Duración: ${v.duracion}`;
+    return tarjeta;
+}
+
+function render() {
+    const q = normalizar(estado.busqueda);
+    const lista = videos.filter((v) =>
+        (estado.categoria === 'todos' || v.categoria === estado.categoria) &&
+        normalizar(`${v.titulo} ${v.descripcion}`).includes(q)
+    );
+
+    contador.textContent = `Mostrando ${lista.length} de ${videos.length} videos`;
+    grid.replaceChildren();
+
+    if (!lista.length) {
+        const vacio = document.createElement('p');
+        vacio.className = 'empty';
+        vacio.textContent = 'No se encontraron videos con los criterios ingresados.';
+        grid.append(vacio);
         return;
     }
-
-    filtered.forEach(video => {
-        const card = document.createElement('div');
-        card.className = 'video-card';
-
-        card.innerHTML = `
-            <div class="video-player-box">
-                <span class="card-category-tag">${video.category}</span>
-                <video controls preload="metadata">
-                    <source src="${video.videoUrl}" type="video/mp4">
-                    Tu navegador no soporta el reproductor.
-                </video>
-            </div>
-            <div class="video-card-body">
-                <div>
-                    <h4>${video.title}</h4>
-                    <p>${video.description}</p>
-                </div>
-                <div class="video-meta">
-                    <span>Modulo FIMACOR</span>
-                    <span>Duracion: ${video.duration}</span>
-                </div>
-            </div>
-        `;
-
-        videoGrid.appendChild(card);
-    });
+    grid.append(...lista.map(crearTarjeta));
 }
 
-function setupFilters() {
-    searchInput.addEventListener('input', (e) => {
-        currentSearch = e.target.value;
-        renderVideos();
-    });
+// Solo un video reproduciéndose a la vez
+grid.addEventListener('play', (e) => {
+    grid.querySelectorAll('video').forEach((v) => { if (v !== e.target) v.pause(); });
+}, true);
 
-    categoryButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            categoryButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            currentCategory = btn.getAttribute('data-category');
-            renderVideos();
-        });
-    });
-}
+buscador.addEventListener('input', (e) => { estado.busqueda = e.target.value; render(); });
 
-function downloadResource(fileName) {
-    alert(`Descargando recurso: ${fileName}`);
+botones.forEach((btn) => btn.addEventListener('click', () => {
+    botones.forEach((b) => b.classList.toggle('active', b === btn));
+    estado.categoria = btn.dataset.category;
+    render();
+}));
+
+// Modo oscuro (misma clase que usa el sistema FIMACOR)
+function aplicarTema(oscuro) {
+    document.body.classList.toggle('fimacor-dark-mode', oscuro);
+    btnTema.textContent = oscuro ? '☀️' : '🌙';
 }
+try { aplicarTema(localStorage.getItem('fimacorTema') === 'dark'); } catch { aplicarTema(false); }
+btnTema.addEventListener('click', () => {
+    const oscuro = !document.body.classList.contains('fimacor-dark-mode');
+    aplicarTema(oscuro);
+    try { localStorage.setItem('fimacorTema', oscuro ? 'dark' : 'light'); } catch { /* sin storage */ }
+});
+
+render();
