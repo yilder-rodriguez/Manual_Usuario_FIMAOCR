@@ -1,11 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>FIMACOR - Manual de Usuario y Documentacion en Video</title>
+    <link rel="stylesheet" href="./CSS/style.css">
 </head>
 <body>
-    
+
+    <header class="navbar">
+        <div class="brand">
+            <div class="sena-logo-container">
+                <svg class="sena-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#00ff88" d="M50 5 C25 5 5 25 5 50 C5 75 25 95 50 95 C75 95 95 75 95 50 C95 25 75 5 50 5 Z M50 15 C60 15 68 23 68 33 C68 43 60 51 50 51 C40 51 32 43 32 33 C32 23 40 15 50 15 Z M25 78 L35 58 L45 58 L35 78 Z M45 78 L55 58 L65 58 L55 78 Z M65 78 L75 58 L85 58 L75 78 Z"/>
+                </svg>
+            </div>
+            <div>
+                <h1>FIMACOR</h1>
+                <p>Manual de Usuario en Video y Documentacion SENA</p>
+            </div>
+        </div>
+
+        <nav class="nav-links">
+            <a href="#hero">Inicio</a>
+            <a href="#filtros">Manuales en Video</a>
+            <a href="#recursos">Documentos</a>
+        </nav>
+    </header>
+
+    <section id="hero" class="hero-section">
+        <div class="hero-content">
+            <h2>Manual de Usuario del Sistema FIMACOR</h2>
+            <p>Plataforma audiovisual informativa para el control, operacion y mantenimiento del sistema de maquinaria textil FIMACOR.</p>
+            
+            <div class="search-filter-box">
+                <input type="text" id="searchInput" placeholder="Buscar por tema (ej. login, telar, inventario, reportes)...">
+            </div>
+
+            <div class="category-buttons" id="categoryButtons">
+                <button class="cat-btn active" data-category="todos">Todos</button>
+                <button class="cat-btn" data-category="autenticacion">Autenticacion</button>
+                <button class="cat-btn" data-category="maquinaria">Maquinaria Textil</button>
+                <button class="cat-btn" data-category="inventario">Inventarios</button>
+                <button class="cat-btn" data-category="reportes">Reportes</button>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-container">
+        <div class="section-title">
+            <h3>Catalogo de Videos Instructivos</h3>
+            <span id="videoCount">Mostrando 30 videos</span>
+        </div>
+
+        <div class="video-grid" id="videoGrid"></div>
+
+        <section id="recursos" class="resources-section">
+            <div class="section-title">
+                <h3>Documentacion Tecnica y Descargas</h3>
+            </div>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <h4>Manual de Usuario Completo (PDF)</h4>
+                    <p>Guia detallada paso a paso en formato imprimible con capturas del sistema.</p>
+                    <button onclick="downloadResource('Manual_FIMACOR.pdf')" class="btn-download">Descargar PDF</button>
+                </div>
+                <div class="resource-card">
+                    <h4>Guia de Instalacion y Requisitos</h4>
+                    <p>Documento de configuracion de base de datos y entorno de ejecucion.</p>
+                    <button onclick="downloadResource('Guia_Instalacion.pdf')" class="btn-download">Descargar PDF</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>FIMACOR - Sistema de Control de Maquinaria Textil | Centro de Formacion SENA</p>
+    </footer>
+
+    <script src="./JS/script.js"></script>
 </body>
 </html>
