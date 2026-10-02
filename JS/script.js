@@ -1,4 +1,3 @@
-// Los videos viven en el HTML (index.html). Este script solo filtra y busca.
 const grid = document.getElementById('videoGrid');
 const tarjetas = [...grid.querySelectorAll('.video-card')];
 const contador = document.getElementById('videoCount');
@@ -32,15 +31,11 @@ botones.forEach((btn) => btn.addEventListener('click', () => {
     estado.categoria = btn.dataset.category;
     filtrar();
 }));
-
-// Solo un video reproduciéndose a la vez
 grid.addEventListener('play', (e) => {
     grid.querySelectorAll('video').forEach((v) => { if (v !== e.target) v.pause(); });
 }, true);
 
 filtrar();
-
-// Si un video no carga (URL mala, archivo no existe, formato no soportado), avisa en la tarjeta
 grid.addEventListener('error', (e) => {
     const el = e.target;
     if (el.tagName !== 'SOURCE' && el.tagName !== 'VIDEO') return;

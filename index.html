@@ -10,7 +10,7 @@
 
     <header class="navbar">
         <div class="brand">
-            <img src="./Img/Sena.png" alt="Logo SENA">
+            <img src="./img/sena.png" alt="Logo SENA">
             <div>
                 <h1>FIMACOR</h1>
                 <p>Manual de Usuario en Video y Documentación SENA</p>
@@ -49,41 +49,7 @@
             <span id="videoCount"></span>
         </div>
 
-        <!--
-        ============================================================
-        CÓMO AGREGAR UN VIDEO
-        1. Copia el bloque <article> de abajo y pégalo dentro de
-           <div id="videoGrid"> (al inicio o al final).
-        2. En <source src="..."> pon UNA de estas dos opciones:
-             - URL:      https://midominio.com/videos/login.mp4
-             - Archivo:  ./Videos/login.mp4   (el archivo va en la carpeta Videos/)
-        3. Cambia data-category por: autenticacion | maquinaria | inventario | reportes
-        4. Cambia el tag, título, descripción y duración. El contador
-           y los filtros se actualizan solos.
-
-        <article class="video-card" data-category="autenticacion">
-            <div class="video-player">
-                <span class="card-tag">Autenticación</span>
-                <video controls preload="metadata" poster="./Img/portada.jpg">
-                    <source src="./Videos/mi_video.mp4" type="video/mp4">
-                </video>
-            </div>
-            <div class="video-body">
-                <div>
-                    <h4>Título del video</h4>
-                    <p>Descripción corta de lo que se explica.</p>
-                </div>
-                <div class="video-meta"><span>Módulo FIMACOR</span><span>Duración: 03:00</span></div>
-            </div>
-        </article>
-
-        Si el video está en YouTube, cambia el <video> por:
-        <iframe src="https://www.youtube.com/embed/ID_DEL_VIDEO" allowfullscreen loading="lazy"></iframe>
-        ============================================================
-        -->
-
         <div class="video-grid" id="videoGrid">
-            <!-- ===== 30 videos de ejemplo (URLs aleatorias): reemplázalos por los tuyos ===== -->
             <article class="video-card" data-category="autenticacion">
                 <div class="video-player">
                     <span class="card-tag">Autenticación</span>
